@@ -26,5 +26,14 @@
 ```cd src```
 ```python manage.py runserver```
 ### Create app   
-``````
+```
+```
+## Database  
+### Migration  
+#### Apply migration  
+```python manage.py migrate```  
+## APP  
+### Create an app  
+```python manage.py startapp <app name>```
+
   

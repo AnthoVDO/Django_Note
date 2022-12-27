@@ -36,9 +36,12 @@
 ### See the SQL migration  
 This is only to see what will happen to the database  
 ```python manage.py sqlmigrate <app name> <migration name without extension>```  
-#### Apply migration  
+### Apply migration  
 ```python manage.py migrate #For all the apps```  
-```python manage.py migrate <app name>```    
+```python manage.py migrate <app name>```  
+### Difference between blank and null  
+```with blank= false => possible to keep it empty with python and not a form ```  
+```with null= false => not possible to keep it empty because it is acting on the database side```  
 ## APP  
 ### Create an app  
 ```python manage.py startapp <app name>```

@@ -30,8 +30,15 @@
 ```
 ## Database  
 ### Migration  
+### Create migration  
+```python manage.py makemigrations <app name>```  
+```python manage.py makemigrations #For all the apps```  
+### See the SQL migration  
+This is only to see what will happen to the database  
+```python manage.py sqlmigrate <app name> <migration name without extension>```  
 #### Apply migration  
-```python manage.py migrate```  
+```python manage.py migrate #For all the apps```  
+```python manage.py migrate <app name>```    
 ## APP  
 ### Create an app  
 ```python manage.py startapp <app name>```

@@ -28,6 +28,7 @@
 ### Create app   
 ```
 ```
+
 ## Database  
 ### Migration  
 ### Create migration  
@@ -42,8 +43,19 @@ This is only to see what will happen to the database
 ### Difference between blank and null  
 ```with blank= false => possible to keep it empty with python and not a form ```  
 ```with null= false => not possible to keep it empty because it is acting on the database side```  
+
 ## APP  
 ### Create an app  
 ```python manage.py startapp <app name>```
 
-  
+## SHELL  
+### Move to the shell that know django info  
+```python manage.py shell```  
+### Import a model  
+```from <app>.models import <model name>```  
+Can also add the informations with a software like table plus, ...  
+## Queries  
+Ref: [Django making queries](https://docs.djangoproject.com/en/4.1/topics/db/queries/)
+
+
+

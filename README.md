@@ -56,6 +56,37 @@ This is only to see what will happen to the database
 Can also add the informations with a software like table plus, ...  
 ## Queries  
 Ref: [Django making queries](https://docs.djangoproject.com/en/4.1/topics/db/queries/)
+### Import  
+```from blog.models import Blog```
+### Create  
+```
+    b = Blog(name="test", content="test content")
+    b.save();
+```  
+or  
+```Blog.objects.create(name="test", content="test content")```  
+No need to use save() with object method  
+### Get all  
+```Blog.objects.all()```  
+### Get one (return error if more than 1 or not found)  
+```Blog.objects.get(name="test") #Can add multiple fields``` 
+Note: As is should be unique, it's better to use the primary key (pk=). If the primary key is that same as id, we can use id=  
+### Get all object according to filter  
+```Blog.objects.filter(published=True)```  
+or  
+```Blog.objects.filter(date_year="2022").filter(published=True)```  
+or  
+```Blog.objects.filter(date_year="2022", published=True)```  
+or  
+```Blog.objects.filter(date_year="2022").exclude(published=True)```  
+### Modify  
+Get the row in a variable, modify it (ex: ```b.content = "some text"```) and save   
+### Delete all  
+```Blog.objects.all().delete()```  
+### Delete one  
+```Blog.objects.all()[0].delete() # Delete at first position```  
+```Blog.objects.all()[5:10].delete() #Delete from 5 to article number 10```  
+```Blog.objects.get(pk=1).delete()```
 
 
 

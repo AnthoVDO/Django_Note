@@ -108,7 +108,7 @@ my_blog_post.category.set([cat_python, cat_django])
 Note: Set with erase the other data, to keep them and add one, use add instead of set  
 ```my_blog_post.category.add([cat_javascript])```  
 Note2: with add and set, no need to use save();  
-
+Note3: Can use remove to remove one or more and clear to remove all
 ## Models  
 ### Overload the save method  
 Used to make operation while saving. Here, we create the slug according to the title  

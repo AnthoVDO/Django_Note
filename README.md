@@ -43,11 +43,11 @@ This is only to see what will happen to the database
 ### Difference between blank and null  
 ```with blank= false => possible to keep it empty with python and not a form ```  
 ```with null= false => not possible to keep it empty because it is acting on the database side```  
-
+### Create super user  
+```python manage.py createsuperuser```
 ## APP  
 ### Create an app  
 ```python manage.py startapp <app name>```
-
 ## SHELL  
 ### Move to the shell that know django info  
 ```python manage.py shell```  
@@ -87,6 +87,67 @@ Get the row in a variable, modify it (ex: ```b.content = "some text"```) and sav
 ```Blog.objects.all()[0].delete() # Delete at first position```  
 ```Blog.objects.all()[5:10].delete() #Delete from 5 to article number 10```  
 ```Blog.objects.get(pk=1).delete()```
+## Models  
+### Overload the save method  
+Used to make operation while saving. Here, we create the slug according to the title  
+```
+from django.db import models
+from django.utils.text import slugify
 
+
+# Create your models here.
+class BlogPost(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.SlugField()
+    published = models.BooleanField(default=False)
+    date = models.DateField(blank=True, null=True)
+    content = models.TextField()
+    description = models.TextField()  
+    
+    # Used to avoid to put the () in the end example: BlogPost.published_string instead of BlogPost.published_string()
+    @property # It says that it's a property instead of a method  
+    def published_string(self):
+        if self.published:
+            return "The article is published"  
+        return "The article isn't published" 
+
+    def save(self, *args, **kwargs): # Overload the save method
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
+ ```
+### Many to One  
+```author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)```  
+Need to use the ForeignKey method and in this method, need to add the class with the relation (User here) and specify the action if a user is deleted (Set to null here so also need to set null to True)  
+### Many to Many  
+```category = models.ManyToManyField(Category)```  
+### Example  
+```
+class BlogPost(models.Model):
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) # Set a user foreign key. The on_delete is present to inform how to manage the article if the user is deleted. Here, we decided to set it to NULL
+    category = models.ManyToManyField(Category) # Set the possibility to add multiple categories to a BlogPost
+    title = models.CharField(max_length=100)
+    slug = models.SlugField()
+    published = models.BooleanField(default=False)
+    date = models.DateField(blank=True, null=True)
+    content = models.TextField()
+    description = models.TextField()  
+    
+    # Used to avoid to put the () in the end example: BlogPost.published_string instead of BlogPost.published_string()
+    @property # It says that it's a property instead of a method  
+    def published_string(self):
+        if self.published:
+            return "The article is published"  
+        return "The article isn't published" 
+
+    def save(self, *args, **kwargs): # Overload the save method
+
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        super().save(*args, **kwargs)
+```
 
 

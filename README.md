@@ -91,8 +91,8 @@ Get the row in a variable, modify it (ex: ```b.content = "some text"```) and sav
 First import the classes  
 Assign the field with the foreign key with the object (we assign an author to a blogpost here)
 ```
-my_blog_post = BlogPost.objects.get(fk=1)
-my_user = User.objects.get(fk=1)
+my_blog_post = BlogPost.objects.get(pk=1)
+my_user = User.objects.get(pk=1)
 my_blog_post.author = my_user
 my_blog_post.save()
 ```  
@@ -100,7 +100,7 @@ my_blog_post.save()
 First import the classes  
 Use the set method to assign a list of value (we assign multiple category for an article here)  
 ```
-my_blog_post = BlogPost.objects.get(fk=1)  
+my_blog_post = BlogPost.objects.get(pk=1)  
 cat_python = Category.objects.get(slug="python")
 cat_django = Category.objects.get(slug="django")
 my_blog_post.category.set([cat_python, cat_django])

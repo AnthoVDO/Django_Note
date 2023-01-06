@@ -13,7 +13,7 @@
 ### Install dependecy from requirements.txt  
 ```pip install -r requirements.txt```
 ### Create project  
-```djando-admin startproject <folder name>```
+```django-admin startproject <folder name>```
 ### Rename folder to src
 ```
 |- website/  

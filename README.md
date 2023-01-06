@@ -27,6 +27,7 @@
 ```python manage.py runserver```
 ### Create app   
 ```
+django-admin startapp <folder name>
 ```
 
 ## Database  

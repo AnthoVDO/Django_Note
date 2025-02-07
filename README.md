@@ -5,8 +5,11 @@ Windows
 ```py<version> -m venv .env```   
 Mac   
 ```python3 -m venv .env```   
-### Go to .env
-```source .env/scripts/activate```
+### Go to .env   
+Windows   
+```source .env/scripts/activate```   
+Mac   
+```source .env/bin/activate```  
 ### Install Django  
 ```pip install django==<version>```
 ### Add requirement.txt  

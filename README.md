@@ -1,7 +1,10 @@
 # Django_Note  
 ## Create  
 ### Create .env  
+Windows
 ```py<version> -m venv .env```
+Mac   
+```python3 -m venv .env```   
 ### Go to .env
 ```source .env/scripts/activate```
 ### Install Django  
